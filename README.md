@@ -28,18 +28,20 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+                    
 public class ConexionDB {
+
     public static void main(String[] args) {
+    
         String url = "jdbc:mysql://localhost:3306/mi_base";
         String usuario = "root";
-        String contrasena = "password";
+        String contrasena = "password"; 
         
-        try (Connection conexion = DriverManager.getConnection(url, usuario, contrasena)) {
-            System.out.println("Conexión exitosa");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            try (Connection conexion = DriverManager.getConnection(url, usuario, contrasena)) {
+                System.out.println("Conexión exitosa");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
     }
 }
                 </code></pre>
@@ -50,21 +52,22 @@ public class ConexionDB {
 import java.sql.*;
 
 public class ConsultaDatos {
+
     public static void main(String[] args) {
+    
         String url = "jdbc:mysql://localhost:3306/mi_base";
         String usuario = "root";
         String contrasena = "password";
         
-        try (Connection conexion = DriverManager.getConnection(url, usuario, contrasena);
-             Statement stmt = conexion.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM usuarios")) {
-            
-            while (rs.next()) {
-                System.out.println("ID: " + rs.getInt("id") + ", Nombre: " + rs.getString("nombre"));
+            try (Connection conexion = DriverManager.getConnection(url, usuario, contrasena);
+                 Statement stmt = conexion.createStatement();
+                 ResultSet rs = stmt.executeQuery("SELECT * FROM usuarios")) {            
+                while (rs.next()) {
+                    System.out.println("ID: " + rs.getInt("id") + ", Nombre: " + rs.getString("nombre"));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }
                 </code></pre>
