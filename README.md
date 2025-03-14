@@ -47,7 +47,6 @@ public class ConexionDB {
                 </code></pre>
             </article>
             <article>
-            
                 <h3>Consulta de datos</h3>
                 <pre><code>
 import java.sql.*;
